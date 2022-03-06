@@ -8,7 +8,7 @@ const request = indexedDB.open('Budget_Tracker', 1);
 request.onupgradeneeded = function(event) {
     const db = event.target.result;
     // creates a table to have a set auto incrementing primary key
-    db.createObjectStore('new_transaction', {autoIncrement: true});
+    db.createObjectStore('transactions', {autoIncrement: true});
 };
 
 // if successul

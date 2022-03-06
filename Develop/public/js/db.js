@@ -27,17 +27,17 @@ request.onerror = function(event) {
 
 
 function saveRecord(record) {
-    const transaction = db.transaction(['new_transaction'], 'readwrite');
+    const transaction = db.transaction(['transactions'], 'readwrite');
 
-    const trackerObjectStore = transaction.objectStore('new_transaction');
+    const trackerObjectStore = transaction.objectStore('transactions');
 
     trackerObjectStore.add(record);
 };
 
 function uploadTransaction() {
-    const transaction = db.transaction(['new_transaction'], 'readwrite');
+    const transaction = db.transaction(['transactions'], 'readwrite');
 
-    const trackerObjectStore = transaction.objectStore('new_transaction');
+    const trackerObjectStore = transaction.objectStore('transactions');
 
     const getAll = trackerObjectStore.getAll();
 
@@ -57,9 +57,9 @@ function uploadTransaction() {
                     throw new Error(serverResponse);
                 }
 
-                const transaction = db.transaction(['new_transaction'], 'readwrite');
+                const transaction = db.transaction(['transactions'], 'readwrite');
 
-                const trackerObjectStore = transaction.objectStore('new_transaction');
+                const trackerObjectStore = transaction.objectStore('transactions');
 
                 trackerObjectStore.clear();
 

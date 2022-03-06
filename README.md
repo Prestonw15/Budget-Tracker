@@ -15,3 +15,6 @@ In order to runs this app properly the coder must have installed these packages 
   <li>morgan</li>
   <li>compression</li>
 </ul>
+
+# Author
+If you have any questions please contact me at: prestonwatson.15@gmail.com

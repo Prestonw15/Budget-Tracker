@@ -8,7 +8,7 @@ const request = indexedDB.open('Budget-Tracker', 1);
 request.onupgradeneeded = function(event) {
     const db = event.target.result;
     // creates a table to have a set auto incrementing primary key
-    db.createObjectStore('Pending', {autoIncrement: true});
+    db.createObjectStore('new_transaction', {autoIncrement: true});
 };
 
 // if successul
@@ -27,17 +27,17 @@ request.onerror = function(event) {
 
 
 function saveRecord(record) {
-    const transaction = db.transaction(['Pending'], 'readwrite');
+    const transaction = db.transaction(['new_transaction'], 'readwrite');
 
-    const trackerObjectStore = transaction.objectStore('Pending');
+    const trackerObjectStore = transaction.objectStore('new_transaction');
 
     trackerObjectStore.add(record);
 };
 
 function uploadTransaction() {
-    const transaction = db.transaction(['Pending'], 'readwrite');
+    const transaction = db.transaction(['new_transaction'], 'readwrite');
 
-    const trackerObjectStore = transaction.objectStore('Pending');
+    const trackerObjectStore = transaction.objectStore('new_transaction');
 
     const getAll = trackerObjectStore.getAll();
 
@@ -57,9 +57,9 @@ function uploadTransaction() {
                     throw new Error(serverResponse);
                 }
 
-                const transaction = db.transaction(['Pending'], 'readwrite');
+                const transaction = db.transaction(['new_transaction'], 'readwrite');
 
-                const trackerObjectStore = transaction.objectStore('Pending');
+                const trackerObjectStore = transaction.objectStore('new_transaction');
 
                 trackerObjectStore.clear();
 
